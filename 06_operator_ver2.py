@@ -107,3 +107,24 @@ num2 = 456
 print(num1 >= num2) # False
 # print(num1 >= "num2") # TypeError int 와 str 비교 불가 not supported
  
+# ======================================
+
+# and / or / not - 논리연산자
+# and: 둘 다 True여야 True를 반환
+print(5 == 5 and 7 == 7) # True and True = True
+print(5 == 7 and 7 == 7) # False and True = False
+# 첫 번째 d False라면 뒤에 조건은 확인x
+print(5 == 5 and 7 != 7) # True and False = False
+
+# or: 하나라도 True라면 True를 반환
+print(5 == 5 or 7 == 7) # True or True = True
+# 첫 번째 d True라면 뒤에 조건은 확인x
+print(5 == 7 or 7 == 7) # False or True = True
+print(5 == 5 or 7 != 7) # True or False = True
+
+# not: 값을 반대로 뒤집음
+print(not True) # False
+print(not 5 == 5) # False
+# 5 == 5를 연산하여 True를 반환
+# not True로 동작해서 True를 뒤집어 False 반환
+# 반환받은 False라는 값을 print가 터미널로 출력
