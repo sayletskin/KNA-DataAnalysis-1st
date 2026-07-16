@@ -102,4 +102,61 @@ print(word[::2]) # PTO
 
 # ★순서 뒤집기
 print(word[::-1]) # NOHTYP
-# step은 인덱스가 아니고, 음수 입력 시 문자열의 순서를 뒤집음 
+# step은 인덱스가 아니고, 음수 입력 시 문자열의 순서를 뒤집음
+
+# ==================================
+# len() - 문자열의 길이 반환 
+# len(문자열)
+
+print("=== len() 활용 ===")
+
+print(len("Hello World!")) # 12 (공백도 취급)
+print(len("")) # 0 (빈 문자열은 0)
+
+var = "여러분~! 한 시간만 더 하면 됩니다! 조금만 더 힘을 내주세요!"
+print(len(var)) # 36 (변수에 담긴 문자열 길이 출력 가능)
+
+print(len("이것도") + len("가능할까?"))
+# len() 은 int를 반환하기 때문에 계산 가능
+
+# 음수 인덱스를 사용하지 않고 마지막 인덱스 문자를 뽑고 싶을 때
+print("abc"[len("abc") - 1]) # 할 수 있지만 실용적이지 않음
+
+# =============================
+print("=== in 활용 ===")
+
+# in - 특정 문자열에 포함되었는지 여부 확인
+# "여부"를 확인하기 때문에 True 또는 False (bool)으로 결과 반환
+# 찾을문자열 in 문자열 (변수 치환 가능)
+print("고장" in "설비 고장 발생")
+# 찾을 문자열 "고장" 이 "설비 '고장' 발생"에 있어서 True
+print("정상" in "설비 고장 발생") # False
+print("설비에서 고장" in "설비 고장 발생") # False
+print("설비에서 고장" in "설비에서 고장 발생") # True
+
+# not in- in의 정반대 동작
+print("고장"not in "설비 고장 발생") # False
+print("정상"not in "설비 고장 발생") # True
+print("설비에서 고장"not in "설비 고장 발생") # True
+print("설비에서 고장"not in "설비에서 고장 발생") # False
+
+print(" " in "설비 고장 발생") # True
+# 따옴표로 감싼 공백은 정말 한 글자로 취급
+
+print("=== count() ====")
+
+# .count - 문자열에 특정 글자의 수(int)를 반환 .(점)붙이기 조심
+# 문자열.count("찾을 글자")
+print("banana".count("a")) # 3
+print("010-1234-1234".count("-")) # 2
+print("layla@spreatics.com".count("@")) # 1 
+# 이메일에는 @가 포함되어있어서 in이나 count로 찾을 수 있음, 곧 find도 배우네
+
+# =======================
+print("=== find() ===")
+# find - 전달받은 글자의 '첫 번째'로 나온 위치 인덱스 반환
+# 찾는 글자가 없으면 -1
+email = "hong@company.com"
+at = email.find("@") # 4
+user_id = email[:at] # hong
+print(user_id) # hong > 이메일 @ 이용해서 아이디만 뽑아내기
