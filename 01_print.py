@@ -63,3 +63,4 @@ print("=====NameError 만들기=====")
 print("NameError 만들기") #line 63, SyntaxError(문법 오류)(띄어쓰기 하면 콤마 에러(두개 다 변수인데 콤마 뺐니?)) or 괄호 빼먹음)
 print("NameError만들기") #line 64, , NameError(없는 변수, 따옴표 실수)
 #코드는 위에서 아래로 실행, 따라서 에러 발생시 그 이후 코드 실행x
+print("다른 컴퓨터에서 print 시험해보기")
