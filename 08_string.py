@@ -160,3 +160,288 @@ email = "hong@company.com"
 at = email.find("@") # 4
 user_id = email[:at] # hong
 print(user_id) # hong > 이메일 @ 이용해서 아이디만 뽑아내기
+
+# SQE-00Q8 이라는 설비의 SQE만 뽑아내기 (find(index)와 슬라이싱 사용)
+sqe = "SQE-00Q8"
+sqe_index = sqe.find("SQE")
+print(sqe_index) # 0
+sqe_index = sqe.find("-")
+print(sqe_index) # 3
+sqe_fin = sqe[:sqe_index] # sqe[0:3] -> "SQE"
+print(sqe_fin)
+
+# index를 써서 위 실습 다시하기
+sqe_index = sqe.index("-")
+sqe_fin = sqe[:sqe_index] # sqe[0:3] -> "SQE"
+print(sqe_fin)
+
+nick = "saylets kin"
+nick_index = nick.index(" ")
+nick_fin = nick[:nick_index]
+print(nick_fin) # saylets
+
+# =======================
+# 특정 문자열의 위치(인덱스 번호)를 반환 (앞에서 나오는 가장 처음 나오는 인덱스 번호만 반환)
+# 찾는 문자열이 없으면 오류
+email = "layla@spreatics.com"
+at = email.index("@") # 5
+print(email[:at]) # layla (랄라)
+print(email[at+1:]) # spreatics.com
+
+# ========================
+# 특정 문자열의 개수 세기
+str = "a, b, c, d, e, a, a" 
+# a개수를 세고싶으면
+print(str.count("a")) # 3
+# 쉼표 개수 세기
+print(str.count(",")) # 6
+
+str = "a, b, c, d, e,a, a"
+print(str.count(", ")) # 5 , count는 문자열이 완전히 동일해야함
+
+#=======================
+# startswith, endswith 특정 문자열로 시작/끝 나는지 검사 (bool형으로 반환)
+nick = "sayletskin"
+#saylets로 시작하는지 검사
+nick_sta = "saylets"
+print(nick.startswith(nick_sta)) # True
+# 변수명은 ""따옴표 금지
+nick_end = "kin"
+print(nick.endswith(nick_end)) # True
+
+str2 = "월요일 좋아, 정말로 최고야!"
+print(str2.endswith("!")) # True
+print(str2.endswith("야!")) # True
+print(str2.endswith("요!")) # False
+print(str2.endswith(" 월요일 좋아, 정말로 최고야! ")) # 띄어쓰기 공백이 있어 다르기 때문에 False
+
+# ====================
+print("=== 값은 객체다 ===")
+
+print(type("절대로 잊어먹어버리지말기")) # str
+# endswith와 len의 차이
+# endswith는 .으로 연결
+    # .으로 연결하는 도구들은 "메서드"
+    # 문자열이나 int, float처럼 특정 자료형(객체) 내부에 포함된 기능
+# len은 . 사용 안함
+    # () -> 함수
+    # len과 같이 개발자가 직접 선언하지 않은 기본 제공 함수 "내장 함수"
+"saylets".startswith("say")
+## 123.startswith(1) # 오류
+# .으로 사용하는 메서드들은 특정 자료형(객체 타입)마다 다름
+# int 자료형의 객체에는 startswith라는 메서드가 없음
+
+## print(len(123)) # int는 길이가 없다고 오류
+# len 내장함수 길이를 정의하기 때문에 int형은 받지 않는다
+
+# ==============
+# 재할당 복습
+
+num = 1
+num = num + 1 # 2
+num += 1 # 복합할당연산자 # 3
+
+nick = "sayletskin"
+print(nick.upper()) # "SAYLETSKIN"
+nick = nick.upper()
+print(nick)
+
+# =========================
+print("==== .upper() ====")
+
+str3 = "abcdefg"
+print(str3) # abcdefg
+
+str3.upper # ABCDEFG > 반환은 대문자인데, 값에 재할당은 x
+print(str3) # abcdefg > 기존 소문자 그대로
+
+str3 = str3.upper() # 계속 대문자로 변환하려면 변수에 "재할당" / 최초 변수 "할당"은 불가능
+print(str3) # ABCDEFG
+# str4 = str4.upper()
+
+# ==============
+user_name = "kim chul soo"
+
+print(user_name.capitalize()) # Kim chul soo
+print(user_name.title()) # Kim Chul Soo
+
+print("i'm full".title()) # I'M Full
+print("i\'m full".title()) # I'M Full
+
+# ===================
+print(" ==== .strip() ====")
+
+# 공백 제거
+# .strip(): 앞과 뒤의 모든 공백 제거 (중간 띄어쓰기는 그대로 유지)
+# .lstrip(): left(왼쪽) 공백만 제거
+# .rstrip(): right(오른쪽) 공백만 제거
+
+raw = "    ㅇㅅㅇ;;       "
+print(raw.strip()) # "ㅇㅅㅇ;;"
+print(raw.rstrip()) # "    ㅇㅅㅇ;;"
+print("   ㅇ   ㅅ   ㅇ   ".strip()) # "ㅇ   ㅅ   ㅇ"
+# 문자열의 가운데 공백은 strip으로 지울 수 없음
+
+print(raw) # "    ㅇㅅㅇ;;       "
+# strip()도 재할당이나 새 변수에 할당하지 않는 이상 휘발
+
+# strip으로 문자 제거
+str4 = "===정상==="
+print(str4.strip("=")) # 정상
+# 인자로 전달한 양 끝의 "="이 모두 지워짐
+
+str5 = "=정상=========="
+print(str5.strip("=")) # 정상
+# 갯수 상관 없이 인자로 전달한 문자를 무조건 모두 삭제
+
+print(str5.strip("= ")) # 정상 
+# strip 자체가 공백을 지우는 것이기 때문에 
+# 공백 상관없이 양 끝의 해당 문자열 삭제
+
+str6 = "==정==상===="
+print(str6.strip("=")) # 정==상
+# 글자 중간에 있는 문자열은 건드리지 않음
+
+# strip() 메서드에 인자로 들어가는 문자열은 완전히 동일하지 않아도 전부 삭제
+str8 = " ab ㅇㅅㅇ cd  "
+print(str8.strip("abcd "))
+
+# =========================
+print("=== 체이닝 ===")
+
+raw = "         NORMAL           "
+
+# 체이닝 X
+step1 = raw.strip() # NORMAL
+step2 = step1.lower() # normal
+
+# 체이닝 X, 기존 변수의 재할당
+raw = raw.strip() # NORMAL
+raw = raw.lower() # normal
+
+# 체이닝 O (선호1)
+chain = raw.strip().lower() # normal
+
+# 기존 변수에 재할당 가능 (선호2)
+raw = raw.strip().lower() # normal
+
+str7 = "     Warning     "
+str7_low = str7.lower()
+print("[" + str7_low + "]") # [     warning     ]
+str7_chain = str7.lower().strip()
+print("[" + str7_chain + "]") # [warning]
+
+# ========================
+print("=== replace() ===")
+
+# 특정 문자열을 제거하거나 치환할 때 사용
+# .replace("바꾸고 싶은 문자열","바꿀 문자열")
+# 제거할 때는 인자의 두 번째를 ""(빈문자열)로 작성
+text = " 정   상  가   동     "
+print(text.replace(" ","")) # "정상가동"
+print(text.replace("  ","")) # " 정 상가 동 "
+
+# 글자 치환
+print("고장".replace("고장", "fault")) # fault
+print("고장".replace("고", "fault")) # fault장
+
+# 단어 치환
+str9 = "설비 정상 가동"
+print(str9.replace("정상", "점검")) # "설비 점검 가동"
+
+# replace() 체이닝 하는 법
+num = "           010-1234-1234          "
+print(num.replace(" ", "").replace("-", "")) # 01012341234
+
+# ===============================
+print("=== split() ===")
+# 문자열 자르기
+# 결과는 대괄호에 감싸진 "리스트" 자료형
+# 리스트는 순서가 있기 때문에 왼쪽에서부터 0으로 시작하는 인덱스가 자동 생성
+
+drinks = "에스프레소 아메리카노 카페라떼"
+print(drinks.split()) # ['에스프레소', '아메리카노', '카페라떼']
+# 띄어쓰기를 기준으로 나뉘어진 세 개의 문자열을 대괄호에 감싸서 반환
+
+# 구분자를 특정하고 싶은 경우
+fruits = "딸기,거봉,키위,사쿠란보"
+print(fruits.split(",")) # ['딸기', '거봉', '키위', '사쿠란보']
+# 문자열 콤마를 기준으로 분할
+
+fruits2 = "딸기, 거봉, 키위, 사쿠란보"
+print(fruits2.split(",")) # ['딸기', ' 거봉', ' 키위', ' 사쿠란보']
+# 공백 그대로 유지
+print(fruits2.split(", ")) # ['딸기', '거봉', '키위', '사쿠란보']
+# ", " 공백 붙여서 정상화
+
+# 리스트의 인덱스
+fruits_list = fruits.split(",")
+print(fruits_list)
+
+# 거봉만 출력하기
+# 출력하고자 하는 요소의 인덱스를 대괄호로 감싸서 호출
+print(fruits_list[1]) # 거봉
+print(fruits_list[3]) # 사쿠란보
+print(fruits_list[-1]) # 사쿠란보
+
+# split 횟수 제한
+num = "010-1234-1234"
+# ["010", "1234-1234"] 이렇게 하고 싶을 때
+print(num.split("-", 1))
+# text.split("구분자", 숫자) 숫자로 원하는 횟수만큼 앞에서 자를 수 있음
+
+# ===============================
+print("=== join() ===")
+# 리스트를 하나의 문자열로 합침
+# "구분자".join(리스트)  으로 구성
+# 모든 요소가 합쳐져서 하나의 문자열로 반환
+
+"-".join(fruits_list) # "딸기-거봉-키위-사쿠란보"
+",".join(fruits_list) # "딸기,거봉,키위,사쿠란보"
+", ".join(fruits_list) # "딸기, 거봉, 키위, 사쿠란보"
+
+# 실습. pyThon 출력하기
+print("=== 실습. pyThon 출력하기 ===")
+
+word = "python"
+
+# strip + capitalize(title)
+print(word[:2] + word.strip("py").capitalize()) # pyThon
+
+# replace 
+print(word.replace("t","T")) # pyThon
+
+# 슬라이싱, + T만 upper 사용
+print(word[:2] + word[2].upper() + word[3:])
+
+# 인덱싱으로 글자 하나씩 연결
+print(word[0] + word[1] + word[2].upper() + word[3:])
+
+#  split + join
+print(word.split("t")) # ['py', 'hon']
+print("T".join(word.split("t"))) # pyThon
+print(word[2].upper().join(word.split("t"))) # pyThon
+
+# =================================================
+print("=== print 함수의 sep, end ===")
+
+print("2026", "07", "27") # 2026 07 27 (기본적으로 ","는 공백이 들어감)
+
+# sep 속성을 사용하면 구분을 공백이 아닌 특정 문자열로 가능
+print("2026", "07", "27", sep="ㅇㅅㅇ") # 2026ㅇㅅㅇ07ㅇㅅㅇ27
+# 공백 대신 sep 속성에 전달한 문자열이 삽입되어 이어짐
+
+print("안녕", "하세") # 안녕 하세
+print("안녕", "하세", end="요") # 안녕 하세요
+# end 속성 사용 시 출력문 마지막에 해당 문자열이 붙어 삽입
+
+# print("안녕", "하세", end="요", ㅎㅎ) # end 속성 뒤에 또 인자를
+
+# print 함수 + 사용 시 sep과 end
+print("안녕", "하세", end="요" + " 여러분") # 정상 동작 but 사용 자제
+
+# 기본적으로 print문에는 sep으로 공백 한 칸,
+# end로 \n(줄바꿈)이 적용되어 있음
+# 근데, 개발자가 각 속성을 직접 부여할 경우
+# 기본값이 아닌 전달받은 속성값을 사용
+print("이런식으로 쓰죠?", "근데 안보이는 기본값이 있어요", sep=" ", end="\n")
