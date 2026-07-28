@@ -190,14 +190,14 @@ print(email[at+1:]) # spreatics.com
 
 # ========================
 # 특정 문자열의 개수 세기
-str = "a, b, c, d, e, a, a" 
+str1 = "a, b, c, d, e, a, a" 
 # a개수를 세고싶으면
-print(str.count("a")) # 3
+print(str1.count("a")) # 3
 # 쉼표 개수 세기
-print(str.count(",")) # 6
+print(str1.count(",")) # 6
 
-str = "a, b, c, d, e,a, a"
-print(str.count(", ")) # 5 , count는 문자열이 완전히 동일해야함
+str1 = "a, b, c, d, e,a, a"
+print(str1.count(", ")) # 5 , count는 문자열이 완전히 동일해야함
 
 #=======================
 # startswith, endswith 특정 문자열로 시작/끝 나는지 검사 (bool형으로 반환)
@@ -445,3 +445,16 @@ print("안녕", "하세", end="요" + " 여러분") # 정상 동작 but 사용 �
 # 근데, 개발자가 각 속성을 직접 부여할 경우
 # 기본값이 아닌 전달받은 속성값을 사용
 print("이런식으로 쓰죠?", "근데 안보이는 기본값이 있어요", sep=" ", end="\n")
+
+# f-string
+# 따옴표 밖에 f 작성
+# 변수명은 꼭 {중괄호}에 감싸기
+name, temp = "PUMP_A", 87
+print(f"설비 {name}, 온도 {temp}도") # 설비 PUMP_A, 온도 87도 
+print("설비 " + name + ", 온도 " + str(temp) + "도") # 설비 PUMP_A, 온도 87도 
+
+# f-string 연산
+hour = 8
+# 우리는 하루에 8시간 수업을 듣고, 이는 480분 입니다.
+print(f"우리는 하루에 {hour}시간 수업을 듣고, 이는 {hour * 60}분 입니다.")
+
