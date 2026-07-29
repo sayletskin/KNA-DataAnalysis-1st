@@ -104,3 +104,5 @@
 ##d = str(True) # "True"
 # e = int("str") # error, float도 동일
 # f = int(False) # error, float도 동일
+
+age = int(input("나이: ")) # 나이는 int고 input은 str이여서 int로 형태 변환 해야함

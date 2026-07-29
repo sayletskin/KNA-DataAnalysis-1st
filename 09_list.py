@@ -268,9 +268,9 @@ print(f) # 원본 변화 x
 
 # 실습 9
 temps = [15, 17, 23, 32, 21]
-temps.sort()
-print(temps)
-temps.reverse()
-print(temps)
-print(temps.count(32), temps.index(32))
- 
+temps.sort() 
+print(temps) # [15, 17, 21, 23, 32] 
+temps.reverse() 
+print(temps) # [32, 23, 21, 17, 15]
+print(temps.count(32), temps.index(32)) # 1 0
+
