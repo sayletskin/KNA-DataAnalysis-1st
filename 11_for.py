@@ -92,6 +92,107 @@ for i in range(1, 100):
     count += 1
     print(count) # 1~99 까지 수를 13 나눴을 때 나머지가 1인 수의 갯수 , 8
 
+
 # 평균 구하기
 total4, count2 = 0, 0
-#for i in range
+for i in range(1, 60):
+  if i % 15 == 0:
+    count2 += 1
+    total4 += i
+    print(total4, count2)
+    print(total4 / count2)
+
+print("=== 구분선 ===")
+
+# enumerate (낱낱이 세다) < 리스트 필요 
+temps = [33, 23, 45, 32, 28]
+
+for t in enumerate(temps):
+  print(t) # (인덱스, 요소값) < 객관적으로 쓰기 불편함 따라서 
+# 범위를 지정하지 않아도 enumerate()에 전달한 리스트의 모든 요소 순화
+# 문제는 형식이 (인덱스, 요소값)로 출력
+# enumerate를 사용할 때는 변수를 2개 전달
+
+for idx, t in enumerate(temps): # 내가 저 위에 total4, count2 = 0, 0 복합 할당한거 처럼 idx, t = (인덱스), (요소값) 으로 복합 할당 / 순서 중요
+  print(f"idx: {idx}, t: {t}") # idx: (인덱스), t : (요소값) < 이건 쓰기 편한가?
+
+# for, idx, t in enumerate(temps):
+# 위와 같이 전달하면 enumerate가 temps 리스트를 순회하면서
+# 반환해준 (인덱스, 해당인덱스의값)을
+# 각자 idx에 인덱스 값을 할당, t에 해당 인덱스값을 할당
+# 두 개의 값을 바로 사용할 수 있게 해줌
+
+for idx, t in enumerate(temps):
+  print(f"현재 인덱스: {idx}")
+  print(f"{idx}인덱스의 값: {t}")
+  print(f"{idx+1}번째 반복 끝")
+# 앞에서 range에 썼던 i와 지금 enumerate의 idx는 다르다 i는 인덱스가 아니고 idx는 순수 인덱스다
+
+# 안녕의 인덱스 출력
+
+# 이를 위해서는 값을 비교하기위해 모든 리스트의 값이 필요
+# 그리고 그 값의 인덱스를 알아야 출력
+list1 = ["안녕", "hi", "hi", "안녕", "hi", "안녕"]
+
+# 리스트의 모든 요소에 접근을 해야 하는 경우가 잦음
+# 그래서 Python이 반복문에서 이를 쉽게 할 수 있도록
+# enumerate라는 내장 함수를 제공
+# enumerate은 리스트의 모든 요소를 앞에서부터
+# 순서대로 하나씩 찍어가면서 접근
+# 접근해서 각자의 인덱스와 그 값을 뽑아줌 -> 돌려주는 값은 2개
+# 값을 두 개 받으니 우리도 변수 2개 준비하면
+# 각 변수에 쏙쏙 값이 할당
+# 돌려주는 순서는 인덱스, 값
+# 그렇기 때문에 우리는 enumerate를 사용할 때
+# for 뒤에 변수를 두 개 전달
+for index, value in enumerate(list1):
+  if value == "안녕":
+    print(index) # 채고다 enumerate!!!
+# 참고로 위에 있는 코드는 "안녕"이라 적힌 요소값의 인덱스를 뽑아내는 코드다
+
+# range > 인덱스 추출인데 요소값 뽑아내는 법
+list1_len = int(len(list1))
+print(list1_len) # 6
+for i in range(list1_len):
+  print(list1[i])
+
+# 실습
+N = int(input("숫자: "))
+result = 0
+
+for i in range(1, N+1):
+  result += i
+  print(result)
+# ===============================
+# 구구단 만들기
+
+# 2단
+for su in range(1,10):
+  print(f"2 X {su} = {2 * su}")
+
+# 1~5단 출력
+# 필요한 변수: 2개 (몇 단을 출력할건지, 거기에 얼마나 곱할건지)
+# 몇 단을 출력할건지 1~5, 거기서 얼마나 곱할건지: 1~9
+# for문 중첩을 사용
+
+# 단수를 유지하고 아네서 또 점점 커지는 변수가 있어야 하니
+# 바깥 for문은 단수를 늘리고
+# 안쪽 for문은 곱할 수를 늘리도록 구성
+for i in range(1, 6): # 1~5 까지 반복
+  for j in range(1, 10): # 1~9 까지 반복 종료
+    print(f"{i} X {j} = {i * j}")
+  print(f"===={i}단 끝====")
+
+# 1~9 단 사이 2의 배수 단만 구구단 출력
+# 2, 4, 6, 8단 만 출력
+# 방법1) range에 간격 전달
+# 방법2) if문 사용
+
+for i in range(2, 10, 2):
+  for j in range(1, 10):
+    print(f"{i} X {j} = {i * j}")
+
+for i in range(1,10):
+  for j in range(1,10):
+    if i % 2 == 0: # i = 2, 4, 6, 8
+      print(f"{i} X {j} = {i * j}") # 2 X 1 = 2 시작해서, 8 X 9 = 72 로 끝남
