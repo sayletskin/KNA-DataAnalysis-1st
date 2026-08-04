@@ -11,7 +11,7 @@ print(type(list_), type(tuple_))
 
 empty_set = {}
 print(type(empty_set)) # <class 'dict'>
-# 빈 중괄호는 dictionaly라는 다른 자료형으로 생성
+# 빈 중괄호는 dictionary라는 다른 자료형으로 생성
 
 # 빈 셋은 무조건 set() 내장함수를 사용
 real_empty_set = set()
