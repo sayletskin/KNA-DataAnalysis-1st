@@ -14,7 +14,8 @@ print("파일이 있습니다")
 
 with open(csv_path, "r", encoding="utf-8") as f:
   reader = csv.reader(f) 
-  print(reader) 
+  print(reader)
+  print("======") 
 # DictReader가 아닌 그냥 reader를 사용하면
 # 보통 csv파일의 첫줄인 헤더줄도 읽어버린다
 # reader에게 첫줄은 건너뛰라고 말하는 방법이 필요하다
